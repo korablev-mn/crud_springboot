@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Save Employee</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>User Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save User</p>
+
+    <!--/*@thymesVar id="theUser" type=""*/-->
+    <form action="#" th:action="@{/admin/save}" th:object="${theUser}" method="POST">
+
+        <input type="hidden" th:field="*{id}" class="form-control mb-4 col-4" placeholder="id"/>
+
+        <input type="text" th:field="*{login}" class="form-control mb-4 col-4" placeholder="login">
+
+        <input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="password">
+
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="name">
+
+        <input type="data" th:field="*{birthday}" class="form-control mb-4 col-4" placeholder="birthday">
+
+        <input type="hidden" th:field="*{roles}" class="form-control mb-4 col-4" placeholder="roles">
+
+        <div class="edit-field role-personal"><label for="role-e">Role :</label>
+            <select id="role-e" name="role">
+                <option value="user" selected>user</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin}">Back to User List</a>
+</div>
+</body>
+</html>

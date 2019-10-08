@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<div th:fragment="head">
+    <div class="header-panel" >
+        <div class="header-out" id="show-login-menu">
+            <!--/*@thymesVar id="inOut" type=""*/-->
+            <p th:text="${inOut}" />
+        </div>
+        <div><img th:href="@{/img/logo.gif}"/>
+            <!--/*@thymesVar id="status" type=""*/-->
+            <p th:text="${status}"/>
+        </div>
+        <div class="info">
+            <!--/*@thymesVar id="info" type=""*/-->
+            <p th:text="${info}"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
