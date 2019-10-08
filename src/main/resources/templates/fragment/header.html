@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
 <div th:fragment="head">
-    <div class="header-panel" >
-        <div class="header-out" id="show-login-menu">
-            <!--/*@thymesVar id="inOut" type=""*/-->
-            <p th:text="${inOut}" />
+
+    <nav class="navbar navbar-dark bg-dark pull-right">
+        <a href="/" class="btn btn-info my-2 my-sm-1 mx-4 ">home</a>
+        <a href="/admin" class="btn btn-info my-2 my-sm-1 mx-4 ">admin</a>
+        <a href="/user" class="btn btn-info my-2 my-sm-0 ">user</a>
+        <div class="mx-auto order-0">
+            <p><a href="/login" th:href="@{${link}}" class="btn btn-outline-success my-2 my-sm-1" data-toggle="modal" th:text="${inOut}"></a></p>
         </div>
-        <div><img th:href="@{/img/logo.gif}"/>
-            <!--/*@thymesVar id="status" type=""*/-->
-            <p th:text="${status}"/>
-        </div>
-        <div class="info">
-            <!--/*@thymesVar id="info" type=""*/-->
-            <p th:text="${info}"/>
-        </div>
-    </div>
+    </nav>
 </div>
+
 </body>
 </html>

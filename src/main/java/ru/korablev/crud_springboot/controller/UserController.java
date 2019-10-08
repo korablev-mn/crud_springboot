@@ -29,16 +29,30 @@ public class UserController {
     private RoleService roleService;
 
     @GetMapping("/home")
-    public String home(Model theModel) {
-        theModel.addAttribute("inOut", "Login");
-        theModel.addAttribute("status", "user");
-        theModel.addAttribute("info", "welcome");
+    public String home(
+            Model model,
+            Principal login) {
+        if (login == null) {
+            model.addAttribute("inOut", "Login");
+            model.addAttribute("link", "#myModal");
+        } else {
+            model.addAttribute("inOut", "Logout");
+            model.addAttribute("link", "/logout");
+        }
         return "home";
     }
 
     @GetMapping("/admin")
     public String viewAllUsers(
-            Model model) {
+            Model model,
+            Principal login) {
+        if (login == null) {
+            model.addAttribute("inOut", "Login");
+            model.addAttribute("link", "#myModal");
+        } else {
+            model.addAttribute("inOut", "Logout");
+            model.addAttribute("link", "/logout");
+        }
         List<User> userList = new ArrayList<>();
         try {
             userList = userService.findAll();
@@ -71,7 +85,6 @@ public class UserController {
     public String saveEmployee(
             @ModelAttribute("theUser") User user,
             @RequestParam(value = "role") String role) {
-
         try {
             Set<Role> roles = new HashSet<Role>();
             Role roleUser = roleService.findByRole(role);
@@ -88,7 +101,7 @@ public class UserController {
     @GetMapping("/admin/delete")
     public String delete(@RequestParam("userId") Long theId) {
 
-        try{
+        try {
             userService.deleteById(theId);
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -100,6 +113,13 @@ public class UserController {
     public String personalPage(
             Principal profile,
             Model model) {
+        if (profile == null) {
+            model.addAttribute("inOut", "Login");
+            model.addAttribute("link", "#myModal");
+        } else {
+            model.addAttribute("inOut", "Logout");
+            model.addAttribute("link", "/logout");
+        }
         String login = profile.getName();
         User user = userService.getUserByLogin(login);
         List<User> list = new ArrayList<>();

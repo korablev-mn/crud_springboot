@@ -1,8 +1,10 @@
-package ru.korablev.crud_springboot.dao;
+package ru.korablev.crud_springboot.dao.Impl;
 
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.korablev.crud_springboot.dao.RoleRepository;
 import ru.korablev.crud_springboot.model.Role;
 
 import javax.persistence.EntityManager;
@@ -16,6 +18,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     private EntityManager entityManager;
 
     @Override
+    @Transactional(readOnly = true)
     public Role findByRole(String role) {
 
         Query query = (Query) entityManager.createQuery("select u from Role u where u.role = :role");

@@ -1,9 +1,10 @@
-package ru.korablev.crud_springboot.service;
+package ru.korablev.crud_springboot.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.korablev.crud_springboot.dao.UserRepository;
 import ru.korablev.crud_springboot.model.User;
+import ru.korablev.crud_springboot.service.UserService;
 
 import java.util.List;
 import java.util.Optional;

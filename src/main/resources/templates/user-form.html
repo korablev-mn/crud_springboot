@@ -3,6 +3,13 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Save Employee</title>
 </head>
 
@@ -26,11 +33,11 @@
 
         <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="name">
 
-        <input type="data" th:field="*{birthday}" class="form-control mb-4 col-4" placeholder="birthday">
+        <input type="date" th:field="*{birthday}" class="form-control mb-4 col-4" placeholder="birthday">
 
         <input type="hidden" th:field="*{roles}" class="form-control mb-4 col-4" placeholder="roles">
 
-        <div class="edit-field role-personal"><label for="role-e">Role :</label>
+        <div class="form-control mb-4 col-4"><label for="role-e">Role :</label>
             <select id="role-e" name="role">
                 <option value="user" selected>user</option>
                 <option value="admin">admin</option>
