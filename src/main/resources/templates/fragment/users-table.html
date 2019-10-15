@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>CRUD Project</title>
+
+</head>
+<body>
+<div  th:fragment="table">
+    <h5 class="h5 p-3 bg-light">All users</h5>
+    <div class="container-full bg-white p-3">
+
+        <table class="table table-sm m-0 ">
+
+            <thead class="thead">
+            <tr>
+                <th>id</th>
+                <th>login</th>
+                <th>password</th>
+                <th>name</th>
+                <th>birthday</th>
+                <th>role</th>
+                <th>edit</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="tempUser : ${list}">
+
+                <td th:text="${tempUser.id}"/>
+                <td th:text="${tempUser.login}"/>
+                <td th:text="${tempUser.password}"/>
+                <td th:text="${tempUser.name}"/>
+                <td th:text="${tempUser.birthday}"/>
+                <td th:each="tempRole : ${tempUser.roles}">
+                    <p th:text="${tempRole['role']}"/>
+                </td>
+                <td>
+                    <a th:href="@{/admin/showFormForUpdate(userId=${tempUser.id})}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalEdit">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
