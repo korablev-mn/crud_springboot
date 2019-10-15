@@ -65,7 +65,6 @@ public class UserController {
     public String showFormForUpdate(
             @RequestParam("userId") Long theId,
             Model theModel) {
-
         User theUser = userService.findById(theId);
         theModel.addAttribute("theUser", theUser);
         return "home";
@@ -73,8 +72,9 @@ public class UserController {
 
     @PostMapping("/admin/save")
     public String saveEmployee(
-            @ModelAttribute("theUser") User user,
-            @RequestParam(value = "role") String role) {
+            @RequestParam(value = "role") String role,
+            @ModelAttribute("theUser") User user
+           ) {
         try {
             Set<Role> roles = new HashSet<Role>();
             Role roleUser = roleService.findByRole(role);

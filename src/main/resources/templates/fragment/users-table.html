@@ -41,7 +41,7 @@
                     <p th:text="${tempRole['role']}"/>
                 </td>
                 <td>
-                    <a th:href="@{/admin/showFormForUpdate(userId=${tempUser.id})}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalEdit">
+                    <a th:href="@{/admin/showFormForUpdate(userId=${tempUser.id})}" methods="GET" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalEdit">
                         Edit
                     </a>
                 </td>

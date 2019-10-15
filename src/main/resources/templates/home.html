@@ -13,6 +13,50 @@
 </head>
 
 <body>
+<div id="myModalEdit" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit user Lorem ipsum</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body col-lg-6 text-center mx-auto">
+                <!--/*@thymesVar id="theUser" type=""*/-->
+                <form  class="form-horizontal" action="#" th:action="@{/admin/save}" th:object="${theUser}" method="POST">
+                    <div div class="form-group">
+                        <label>ID</label>
+                        <input type="text" name="id" placeholder="ID" class="form-control" th:field="*{id}">
+                    </div>
+                    <div div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Name" class="form-control" th:field="*{name}">
+                    </div>
+                    <div div class="form-group">
+                        <label>Login</label>
+                        <input type="text" name="login" placeholder="Login" class="form-control" th:field="*{login}">
+                    </div>
+                    <div div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" th:field="*{password}">
+                    </div>
+                    <div div class="form-group">
+                        <label>Roles</label>
+                        <input type="text" name="role" placeholder="Role" class="form-control" th:field="*{roles}">
+                    </div>
+                    <input type="hidden"
+                           name="${_csrf.parameterName}"
+                           value="${_csrf.token}"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Edit user</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div th:insert="fragment/header :: head"></div>
 
@@ -65,51 +109,6 @@
 
         </div>
         <!--        Контекст-->
-    </div>
-</div>
-
-<div id="myModalEdit" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit user Lorem ipsum</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body col-lg-6 text-center mx-auto">
-                <!--/*@thymesVar id="theUser" type=""*/-->
-                <form  class="form-horizontal" action="#" th:action="@{/admin/save}" th:object="${theUser}" method="POST">
-                    <div div class="form-group">
-                        <label>ID</label>
-                        <input type="text" name="id" placeholder="ID" class="form-control" th:field="*{id}">
-                    </div>
-                    <div div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" placeholder="Name" class="form-control" th:field="*{name}">
-                    </div>
-                    <div div class="form-group">
-                        <label>Login</label>
-                        <input type="text" name="login" placeholder="Login" class="form-control" th:field="*{login}">
-                    </div>
-                    <div div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="Password" class="form-control" th:field="*{password}">
-                     </div>
-                    <div div class="form-group">
-                        <label>Roles</label>
-                        <input type="text" name="id" placeholder="id" class="form-control" th:field="*{roles}">
-                    </div>
-                    <input type="hidden"
-                           name="${_csrf.parameterName}"
-                           value="${_csrf.token}"/>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Edit user</button>
-            </div>
-        </div>
     </div>
 </div>
 
