@@ -11,12 +11,14 @@
 <body>
 <div th:fragment="head">
 
-    <nav class="navbar navbar-dark bg-dark pull-right">
-        <a href="/" class="btn btn-info my-2 my-sm-1 mx-4 ">home</a>
-        <a href="/admin" class="btn btn-info my-2 my-sm-1 mx-4 ">admin</a>
-        <a href="/user" class="btn btn-info my-2 my-sm-0 ">user</a>
-        <div class="mx-auto order-0">
-            <p><a href="/login" th:href="@{${link}}" class="btn btn-outline-success my-2 my-sm-1" data-toggle="modal" th:text="${inOut}"></a></p>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">Project name</a>
+        <div class="navbar-collapse collapse justify-content-stretch" id="navbar7">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>

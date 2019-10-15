@@ -1,0 +1,15 @@
+#sidebar{
+    width: 100%;
+    max-width: 230px;
+    height: 100%;
+}
+#v-pills-tab a{
+    border-radius: 0!important;
+}
+.main-content{
+    margin-left: 250px;
+}
+.col-3{
+    min-height: 100vh;
+    padding-right: 0!important;
+}

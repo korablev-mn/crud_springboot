@@ -31,60 +31,50 @@ public class UserController {
     @GetMapping("/home")
     public String home(
             Model model,
+            @ModelAttribute("theUser") User user,
             Principal login) {
-        if (login == null) {
-            model.addAttribute("inOut", "Login");
-            model.addAttribute("link", "#myModal");
-        } else {
-            model.addAttribute("inOut", "Logout");
-            model.addAttribute("link", "/logout");
-        }
+        List<User> userList = new ArrayList<>();
+        userList = userService.findAll();
+        model.addAttribute("list", userList);
         return "home";
     }
 
-    @GetMapping("/admin")
-    public String viewAllUsers(
-            Model model,
-            Principal login) {
-        if (login == null) {
-            model.addAttribute("inOut", "Login");
-            model.addAttribute("link", "#myModal");
-        } else {
-            model.addAttribute("inOut", "Logout");
-            model.addAttribute("link", "/logout");
-        }
-        List<User> userList = new ArrayList<>();
-        try {
-            userList = userService.findAll();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        model.addAttribute("list", userList);
-        return "users";
-    }
+//    @GetMapping("/admin")
+//    public String viewAllUsers(
+//            Model model,
+//            Principal login) {
+//        List<User> userList = new ArrayList<>();
+//        try {
+//            userList = userService.findAll();
+//        } catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        model.addAttribute("list", userList);
+//        return "users";
+//    }
 
-    @GetMapping("/admin/showFormForAdd")
-    public String showFormForAdd(Model theModel) {
-
-        User theUser = new User();
-        theModel.addAttribute("theUser", theUser);
-        return "/user-form";
-    }
-
+//    @GetMapping("/admin/showFormForAdd")
+//    public String showFormForAdd(Model theModel) {
+//
+//        User theUser = new User();
+//        theModel.addAttribute("theUser", theUser);
+//        return "/user-form";
+//    }
+//
     @GetMapping("/admin/showFormForUpdate")
     public String showFormForUpdate(
             @RequestParam("userId") Long theId,
             Model theModel) {
-
         User theUser = userService.findById(theId);
         theModel.addAttribute("theUser", theUser);
-        return "/user-form";
+        return "home";
     }
 
     @PostMapping("/admin/save")
     public String saveEmployee(
-            @ModelAttribute("theUser") User user,
-            @RequestParam(value = "role") String role) {
+            @RequestParam(value = "role") String role,
+            @ModelAttribute("theUser") User user
+           ) {
         try {
             Set<Role> roles = new HashSet<Role>();
             Role roleUser = roleService.findByRole(role);
@@ -94,37 +84,30 @@ public class UserController {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        return "redirect:/admin";
+        return "redirect:/";
     }
 
 
-    @GetMapping("/admin/delete")
-    public String delete(@RequestParam("userId") Long theId) {
+//    @GetMapping("/admin/delete")
+//    public String delete(@RequestParam("userId") Long theId) {
+//
+//        try {
+//            userService.deleteById(theId);
+//        } catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        return "redirect:/admin";
+//    }
 
-        try {
-            userService.deleteById(theId);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/user")
-    public String personalPage(
-            Principal profile,
-            Model model) {
-        if (profile == null) {
-            model.addAttribute("inOut", "Login");
-            model.addAttribute("link", "#myModal");
-        } else {
-            model.addAttribute("inOut", "Logout");
-            model.addAttribute("link", "/logout");
-        }
-        String login = profile.getName();
-        User user = userService.getUserByLogin(login);
-        List<User> list = new ArrayList<>();
-        list.add(user);
-        model.addAttribute("list", list);
-        return "users";
-    }
+//    @GetMapping(value = "/user")
+//    public String personalPage(
+//            Principal profile,
+//            Model model) {
+//        String login = profile.getName();
+//        User user = userService.getUserByLogin(login);
+//        List<User> list = new ArrayList<>();
+//        list.add(user);
+//        model.addAttribute("list", list);
+//        return "users";
+//    }
 }
