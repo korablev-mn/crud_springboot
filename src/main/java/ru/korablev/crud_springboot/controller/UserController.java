@@ -68,8 +68,8 @@ public class UserController {
     public String showFormForUpdate(
             @RequestParam("userId") Long theId,
             Model theModel) {
-        User theUser = userService.findById(theId);
-        theModel.addAttribute("theUser", theUser);
+//        User theUser = userService.findById(theId);
+//        theModel.addAttribute("theUser", theUser);
         return "redirect:/home";
     }
 

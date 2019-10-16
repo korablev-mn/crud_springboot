@@ -43,7 +43,7 @@
                 <td>
                     <a th:href="@{/admin/showFormForUpdate(userId=${tempUser.id})}" th:method="GET"
                        class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalEdit"
-                       th:attr="onclick=|showFunctionModal('${tempUser.id}','${tempUser.name}','${tempUser.login}','${tempUser.password}','${tempUser.birthday}','${tempUser.roles[0].role}')|"
+                       th:attr="onclick=|showFunctionModal('${tempUser.id}','${tempUser.name}','${tempUser.login}','${tempUser.password}','${tempUser.birthday}','${tempUser.roles[0].role}','${listRole}')|"
                     >
                         Edit
                     </a>

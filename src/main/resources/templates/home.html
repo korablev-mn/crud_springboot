@@ -31,7 +31,7 @@
                     </div>
                     <div div class="form-group">
                         <label>Name</label>
-                        <input id="userName" type="text" name="name" placeholder="Name" class="form-control" th:required="false" th:field="*{name}">
+                        <input id="userName" type="text" name="name" placeholder="Name" class="form-control" th:field="*{name}">
                     </div>
                     <div div class="form-group">
                         <label>Login</label>
@@ -43,20 +43,13 @@
                     </div>
                     <div div class="form-group">
                         <label>Birthday</label>
-                        <input  id="userBirthday" type="date" name="birthday" placeholder="Birthday" class="form-control" th:required="false" th:field="*{birthday}">
+                        <input  id="userBirthday" type="date" name="birthday" placeholder="Birthday" class="form-control" th:field="*{birthday}">
                     </div>
                     <div div class="form-group">
-<!--                    <input id="userRole" type="hidden" class="form-control mb-4 col-4" placeholder="role" required="false" th:value="${temp}">-->
-<!--                        th:attrappend="class=${' ' + cssStyle}"-->
-<!--                        th:attr="class='selected'"-->
                         <label >Role :</label>
-                            <!--/*@thymesVar id="listRole" type="text"*/-->
-                            <select name="role">
-<!--                                <div th:each="role : ${listRole}">-->
-                                    <option id="userRole" selected></option>
-                                    <option id="userRole2"></option>
-<!--                                    <option th:text="${role}" th:value="${role}"></option>-->
-<!--                                </div>-->
+                            <select id="userSelect" name="role">
+                                <option class="userRole">admin</option>
+                                <option class="userRole" selected>user</option>
                             </select>
                     </div>
                     <input type="hidden"
@@ -78,7 +71,7 @@
 <div class="row">
     <div class="col-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <!--            Сайдбар с вкладками-->
+
             <a class="nav-link active mt-3" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                aria-controls="v-pills-home" aria-selected="true">Admin</a>
             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
@@ -87,7 +80,7 @@
         </div>
     </div>
     <div class="col-10 bg-light">
-        <!--        Контекст-->
+
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active m-4" id="v-pills-home" role="tabpanel"
                  aria-labelledby="v-pills-home-tab">
@@ -123,12 +116,10 @@
             </div>
 
         </div>
-        <!--        Контекст-->
+
     </div>
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -139,14 +130,25 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script>
-    function showFunctionModal(id, name, login, password, date, role) {
+    function showFunctionModal(id, name, login, password, date, role, list) {
+        let myNode = document.getElementById('userSelect');
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
         document.getElementById('userId').value = id;
         document.getElementById('userName').value = name;
         document.getElementById('userLogin').value = login;
         document.getElementById('userPassword').value = password;
         document.getElementById('userBirthday').value = !date ? date : new Date(date).toISOString().substring(0, 10);
-        document.getElementById('userRole').text = role;
-        document.getElementById('userRole2').text = (role =='admin') ? 'user' : 'admin';
+        let arr = list.replace(/[^a-z\s]/gi, '').split(" ");
+        for(let i=0; i<arr.length; i++) {
+            let li = document.createElement('option');
+            if(role == arr[i]){
+                li.setAttribute('selected', true);
+            }
+            li.append(arr[i]);
+            document.getElementById('userSelect').append(li);
+        }
     }
 </script>
 </body>
