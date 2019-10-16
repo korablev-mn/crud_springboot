@@ -9,7 +9,7 @@
 .main-content{
     margin-left: 250px;
 }
-.col-3{
+.row{
     min-height: 100vh;
     padding-right: 0!important;
 }
