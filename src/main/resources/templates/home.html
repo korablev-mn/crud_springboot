@@ -31,7 +31,7 @@
                     </div>
                     <div div class="form-group">
                         <label>Name</label>
-                        <input id="userName" type="text" name="name" placeholder="Name" class="form-control" required="false" th:field="*{name}">
+                        <input id="userName" type="text" name="name" placeholder="Name" class="form-control" th:required="false" th:field="*{name}">
                     </div>
                     <div div class="form-group">
                         <label>Login</label>
@@ -43,20 +43,21 @@
                     </div>
                     <div div class="form-group">
                         <label>Birthday</label>
-                        <input type="date" name="birthday" placeholder="Birthday" class="form-control" required="false" th:field="*{birthday}">
+                        <input  id="userBirthday" type="date" name="birthday" placeholder="Birthday" class="form-control" th:required="false" th:field="*{birthday}">
                     </div>
-<!--                    <div div class="form-group">-->
-<!--                        <label>Roles</label>-->
-<!--                        <input type="text" name="role" placeholder="Role" class="form-control" th:field="*{roles}">-->
-<!--                    </div>-->
                     <div div class="form-group">
-                    <input type="hidden" class="form-control mb-4 col-4" placeholder="roles" required="false" th:field="*{roles}">
-
+<!--                    <input id="userRole" type="hidden" class="form-control mb-4 col-4" placeholder="role" required="false" th:value="${temp}">-->
+<!--                        th:attrappend="class=${' ' + cssStyle}"-->
+<!--                        th:attr="class='selected'"-->
                         <label >Role :</label>
-                        <select name="role">
-                            <option value="user" selected>user</option>
-                            <option value="admin">admin</option>
-                        </select>
+                            <!--/*@thymesVar id="listRole" type="text"*/-->
+                            <select name="role">
+<!--                                <div th:each="role : ${listRole}">-->
+                                    <option id="userRole" selected></option>
+                                    <option id="userRole2"></option>
+<!--                                    <option th:text="${role}" th:value="${role}"></option>-->
+<!--                                </div>-->
+                            </select>
                     </div>
                     <input type="hidden"
                            name="${_csrf.parameterName}"
@@ -138,12 +139,14 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script>
-    function showFunctionModal(id, name, login, password, date) {
+    function showFunctionModal(id, name, login, password, date, role) {
         document.getElementById('userId').value = id;
         document.getElementById('userName').value = name;
         document.getElementById('userLogin').value = login;
         document.getElementById('userPassword').value = password;
         document.getElementById('userBirthday').value = !date ? date : new Date(date).toISOString().substring(0, 10);
+        document.getElementById('userRole').text = role;
+        document.getElementById('userRole2').text = (role =='admin') ? 'user' : 'admin';
     }
 </script>
 </body>
