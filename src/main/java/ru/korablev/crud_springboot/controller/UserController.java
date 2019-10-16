@@ -12,6 +12,7 @@ import ru.korablev.crud_springboot.model.Role;
 import ru.korablev.crud_springboot.model.User;
 import ru.korablev.crud_springboot.service.RoleService;
 import ru.korablev.crud_springboot.service.UserService;
+import ru.korablev.crud_springboot.util.ListRoles;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class UserController {
         List<User> userList = new ArrayList<>();
         userList = userService.findAll();
         model.addAttribute("list", userList);
+        ListRoles roles = new ListRoles();
+        model.addAttribute("listRole", roles.getListRole());
         return "home";
     }
 

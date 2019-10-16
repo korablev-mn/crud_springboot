@@ -31,16 +31,13 @@
                     <label >Password</label>
                     <input type="password"  th:field="*{password}" class="form-control"  placeholder="Password">
                 </div>
-<!--                <div class="form-group">-->
-<!--                    <label >Role</label>-->
-<!--                    <input type="text"  th:field="*{roles}" th:value="${role}" class="form-control"  placeholder="Role">-->
-<!--                </div>-->
-                <input type="hidden" th:field="*{roles}" class="form-control mb-4 col-4" placeholder="roles">
-
-                <div class="edit-field role-personal"><label for="role-e">Role :</label>
-                    <select id="role-e" name="role">
-                        <option value="user" selected>user</option>
-                        <option value="admin">admin</option>
+                <div class="edit-field role-personal">
+                    <label>Role :</label>
+                    <!--/*@thymesVar id="listRole" type="text"*/-->
+                    <select name="role">
+                        <div th:each="role : ${listRole}">
+                        <option th:text="${role}" th:value="${role}"></option>
+                        </div>
                     </select>
                 </div>
                 <div class="form-group">
@@ -53,3 +50,6 @@
 
 </body>
 </html>
+<!--                <input type="hidden" th:field="*{roles}" class="form-control mb-4 col-4" placeholder="roles">-->
+<!--                        <option value="user" selected>user</option>-->
+<!--                        <option value="admin">admin</option>-->
