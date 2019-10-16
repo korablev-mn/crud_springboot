@@ -67,7 +67,7 @@ public class UserController {
             Model theModel) {
         User theUser = userService.findById(theId);
         theModel.addAttribute("theUser", theUser);
-        return "home";
+        return "redirect:/home";
     }
 
     @PostMapping("/admin/save")
@@ -84,7 +84,7 @@ public class UserController {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        return "redirect:/";
+        return "redirect:/home";
     }
 
 
