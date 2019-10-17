@@ -21,19 +21,19 @@
             <form class="form-horizontal" action="#" th:action="@{/admin/save}" th:object="${theUser}" method="POST">
                 <div class="form-group">
                     <label >Name</label>
-                    <input type="text" th:field="*{name}" class="form-control" placeholder="Enter name">
+                    <input type="text" th:field="*{name}" class="form-control"required placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label >Login</label>
-                    <input type="text"  th:field="*{login}" class="form-control"  placeholder="Login">
+                    <input type="text"  th:field="*{login}" class="form-control" required placeholder="Login">
                 </div>
                 <div class="form-group">
                     <label >Password</label>
-                    <input type="password"  th:field="*{password}" class="form-control"  placeholder="Password">
+                    <input type="password"  th:field="*{password}" class="form-control"required placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label >Password</label>
-                    <input type="date"  th:field="*{birthday}" class="form-control"  placeholder="Birthday">
+                    <input type="date"  th:field="*{birthday}" class="form-control" required placeholder="Birthday">
                 </div>
                 <div class="form-group">
                     <label>Role :</label>
