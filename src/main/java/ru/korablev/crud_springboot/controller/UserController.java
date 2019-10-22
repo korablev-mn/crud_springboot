@@ -3,10 +3,7 @@ package ru.korablev.crud_springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.korablev.crud_springboot.dao.UserRepository;
 import ru.korablev.crud_springboot.model.Role;
 import ru.korablev.crud_springboot.model.User;
@@ -73,12 +70,24 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/admin/delete")
+    public String delete(
+            @RequestParam("userId") Long theId
+    ) {
+        userService.deleteById(theId);
+        return "redirect:/home";
+    }
+
     @PostMapping("/admin/save")
     public String saveEmployee(
             @RequestParam(value = "role") String role,
-            @ModelAttribute("theUser") User user
+            @ModelAttribute("theUser") User user,
+            @RequestParam(value ="id", required = false) Long id
            ) {
         try {
+            if(id != null){
+                user.setId(id);
+            }
             Set<Role> roles = new HashSet<Role>();
             Role roleUser = roleService.findByRole(role);
             roles.add(roleUser);
