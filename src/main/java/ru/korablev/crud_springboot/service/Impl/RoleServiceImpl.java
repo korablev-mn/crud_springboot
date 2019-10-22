@@ -6,6 +6,8 @@ import ru.korablev.crud_springboot.dao.RoleRepository;
 import ru.korablev.crud_springboot.model.Role;
 import ru.korablev.crud_springboot.service.RoleService;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -15,5 +17,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role findByRole(String role) {
         return roleRepository.findByRole(role);
+    }
+
+    @Override
+    public List<Role> findAll() {
+        return roleRepository.findAll();
     }
 }

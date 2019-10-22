@@ -28,7 +28,7 @@ public class RestUserController {
         return user;
     }
 
-    @GetMapping("/users/{login}")
+    @GetMapping("/users/login={login}")
     public User getUserByLogin(@PathVariable String login){
         User user = userService.getUserByLogin(login);
         if(user == null){
